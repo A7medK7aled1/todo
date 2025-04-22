@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:todo/provider/organized_provider.dart';
 import 'package:todo/provider/theme_provider.dart';
 import 'package:todo/views/home_view.dart';
 
@@ -21,7 +22,11 @@ class MainApp extends StatelessWidget {
       themeMode: themeProvider.themeMode,
       theme: ThemeData.light(useMaterial3: true),
       darkTheme: ThemeData.dark(useMaterial3: true),
-      home: const HomeView(),
+      home: ChangeNotifierProvider(
+          create: (BuildContext context) {
+            return OrganizedProvider();
+          },
+          child: const HomeView()),
     );
   }
 }

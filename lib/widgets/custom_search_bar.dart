@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:todo/constant.dart';
+import 'package:todo/provider/organized_provider.dart';
 import 'package:todo/provider/theme_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:todo/views/search_view.dart';
@@ -45,7 +46,12 @@ class CustomSearchBar extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    IconButton(onPressed: () {}, icon: Icon(Icons.grid_view)),
+                    IconButton(
+                        onPressed: () {
+                          Provider.of<OrganizedProvider>(context, listen: false)
+                              .toggleOrgnize();
+                        },
+                        icon: Icon(Icons.grid_view)),
                     IconButton(
                         onPressed: onPressed,
                         icon: Icon(FontAwesomeIcons.circleHalfStroke)),
