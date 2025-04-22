@@ -6,9 +6,9 @@ import 'package:provider/provider.dart';
 
 class CustomSearchBar extends StatelessWidget {
   const CustomSearchBar({
-    Key? key,
+    super.key,
     required this.onPressed,
-  }) : super(key: key);
+  });
 
   final void Function() onPressed;
 
