@@ -12,20 +12,14 @@ class HomeView extends StatelessWidget {
     final themeProvider = Provider.of<ThemeProvider>(context);
     return SafeArea(
       child: Scaffold(
-        body: Expanded(
-          child: ListView.builder(
-            shrinkWrap: true,
-            itemCount: 1,
-            itemBuilder: (BuildContext context, int index) {
-              return Column(
-                children: [
-                  CustomSearchBar(
-                    onPressed: themeProvider.toggleTheme,
-                  ),
-                  const CustomNoteListView(),
-                ],
-              );
-            },
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              CustomSearchBar(
+                onPressed: themeProvider.toggleTheme,
+              ),
+              const CustomNoteListView(),
+            ],
           ),
         ),
       ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:todo/provider/theme_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:todo/views/search_view.dart';
 
 class CustomSearchBar extends StatelessWidget {
   const CustomSearchBar({
@@ -22,7 +23,13 @@ class CustomSearchBar extends StatelessWidget {
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         child: GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (BuildContext context) => const SearchView(),
+                ));
+          },
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             height: 60,
