@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:todo/constant.dart';
 import 'package:todo/provider/theme_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:todo/views/search_view.dart';
@@ -16,9 +17,7 @@ class CustomSearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<ThemeProvider>(builder: (context, themeProvider, child) {
-      final searchBarColors = themeProvider.isDarkMode
-          ? const Color(0xff172228)
-          : const Color(0xffe5f0f6);
+      final searchBarColors = themeProvider.isDarkMode ? kDarkMode : kLightMode;
 
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
