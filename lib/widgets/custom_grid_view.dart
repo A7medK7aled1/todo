@@ -17,6 +17,14 @@ class CustomGridView extends StatelessWidget {
         CustomNoteGridItem(),
         CustomNoteGridItem(),
         CustomNoteGridItem(),
+        CustomNoteGridItem(),
+        CustomNoteGridItem(),
+        CustomNoteGridItem(),
+        CustomNoteGridItem(),
+        CustomNoteGridItem(),
+        CustomNoteGridItem(),
+        CustomNoteGridItem(),
+        CustomNoteGridItem(),
       ],
     );
   }

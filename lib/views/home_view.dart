@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:todo/constant.dart';
 import 'package:todo/provider/organized_provider.dart';
 import 'package:todo/provider/theme_provider.dart';
+import 'package:todo/views/add_note_view.dart';
 import 'package:todo/widgets/custom_grid_view.dart';
 import 'package:todo/widgets/custom_list_view.dart';
 import 'package:todo/widgets/custom_search_bar.dart';
@@ -18,7 +19,10 @@ class HomeView extends StatelessWidget {
         floatingActionButton: FloatingActionButton(
           shape: const CircleBorder(),
           backgroundColor: themeProvider.isDarkMode ? kDarkMode : kLightMode,
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const AddNoteView()));
+          },
           child: const Icon(Icons.add),
         ),
         body: SingleChildScrollView(
@@ -34,8 +38,6 @@ class HomeView extends StatelessWidget {
                       : const CustomNoteListView();
                 },
               )
-        
-              // const CustomNoteListView(),
             ],
           ),
         ),
