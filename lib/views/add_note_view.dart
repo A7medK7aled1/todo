@@ -1,6 +1,9 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todo/models/note_model.dart';
+import 'package:todo/provider/note_store_provider.dart';
 import 'package:todo/widgets/custom_text_field.dart';
 
 class AddNoteView extends StatefulWidget {
@@ -32,10 +35,15 @@ class _AddNoteViewState extends State<AddNoteView> {
             IconButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  // Save the note to the database or perform any action
-                  // For now, just print the values
-                  log('Title: ${_titleController.text}');
-                  log('Note: ${_noteController.text}');
+                  final note = NoteModel(
+                    id: 1.toString(),
+                    title: _titleController.text,
+                    content: _noteController.text,
+                    date: DateTime.now(), // أو التاريخ بالشكل اللي تحبه
+                  );
+                  log(note.toString());
+                  Provider.of<NoteStoreProvider>(context, listen: false)
+                      .addNote(note);
                 }
               },
               icon: const Icon(Icons.save),
