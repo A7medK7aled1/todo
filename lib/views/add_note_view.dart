@@ -8,7 +8,17 @@ class AddNoteView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.save),
+              iconSize: 35,
+              padding: const EdgeInsets.only(right: 12),
+              tooltip: 'Save',
+            ),
+          ],
+        ),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(10),
