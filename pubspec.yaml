@@ -10,6 +10,7 @@ dependencies:
   build_runner: ^2.4.15
   flutter:
     sdk: flutter
+  flutter_colorpicker: ^1.1.0
   font_awesome_flutter: ^10.8.0
   hive: ^2.2.3
   hive_flutter: ^1.1.0
@@ -29,5 +30,4 @@ flutter:
         - asset: assets/fonts/Roboto-Regular.ttf
         - asset: assets/fonts/Roboto-SemiBold.ttf
   assets:
-        - assets/image/Notebook-rafiki.png
-        
+    - assets/image/Notebook-rafiki.png

@@ -1,8 +1,8 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
+
 import 'package:provider/provider.dart';
 import 'package:todo/models/note_model.dart';
+
 import 'package:todo/provider/note_store_provider.dart';
 import 'package:todo/widgets/custom_text_field.dart';
 
@@ -20,10 +20,10 @@ class _AddNoteViewState extends State<AddNoteView> {
   late TextEditingController _titleController;
   late TextEditingController _noteController;
 
+  @override
   void initState() {
     super.initState();
 
-    // إذا كانت هناك ملاحظة لتعديلها
     if (widget.note != null) {
       _titleController = TextEditingController(text: widget.note!.title);
       _noteController = TextEditingController(text: widget.note!.content);
@@ -35,7 +35,6 @@ class _AddNoteViewState extends State<AddNoteView> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     _titleController.dispose();
     _noteController.dispose();
     super.dispose();
@@ -54,7 +53,7 @@ class _AddNoteViewState extends State<AddNoteView> {
                     id: 1.toString(),
                     title: _titleController.text,
                     content: _noteController.text,
-                    date: DateTime.now(), // أو التاريخ بالشكل اللي تحبه
+                    date: DateTime.now(),
                   );
 
                   if (widget.note == null) {

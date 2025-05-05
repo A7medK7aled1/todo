@@ -1,4 +1,4 @@
-import 'dart:developer';
+
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -15,7 +15,7 @@ class CustomNoteListView extends StatelessWidget {
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         padding: EdgeInsets.only(bottom: 10),
-        itemCount: notes.notesList?.length ?? 0,
+        itemCount: notes.notesList.length ,
         itemBuilder: (BuildContext context, int index) {
           return CustomNoteListItem(
             note: notes.notesList[index],
