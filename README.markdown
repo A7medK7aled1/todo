@@ -8,7 +8,7 @@ This is a simple To-Do List application built using Flutter, a popular framework
 - View a list of existing notes.
 - Delete notes with a single tap on the trash icon.
 - Switch between light and dark themes.
-- Search functionality to filter notes.
+
 
 ## Technologies Used
 - **Flutter**: For building the UI and handling the app's logic.
