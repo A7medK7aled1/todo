@@ -8,7 +8,6 @@ This is a simple To-Do List application built using Flutter, a popular framework
 - View a list of existing notes.
 - Delete notes with a single tap on the trash icon.
 - Switch between light and dark themes.
-- Search functionality to filter notes.
 
 ## Technologies Used
 - **Flutter**: For building the UI and handling the app's logic.
@@ -43,9 +42,11 @@ This is a simple To-Do List application built using Flutter, a popular framework
 - Switch themes using the theme toggle in the app settings.
 
 ## Screenshots
-- Initial empty state with a prompt to create the first note.
-- List view showing multiple notes with delete options.
-- Dark theme support for better visibility.
+- ![Empty State](screenshots/empty note.PNG)
+- ![List View Light Theme](screenshots\light mode.PNG)
+- ![Grid View Dark Theme](screenshots/Notes grid View.PNG)
+- ![Note Creation](screenshots\add note view.PNG)
+
 
 ## Contributing
 Contributions are welcome! Please fork the repository and submit a pull request with your changes. Ensure to follow the existing code style and include tests where applicable.
