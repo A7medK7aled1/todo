@@ -8,6 +8,7 @@ import 'package:todo/views/add_note_view.dart';
 import 'package:todo/widgets/custom_grid_view.dart';
 import 'package:todo/widgets/custom_list_view.dart';
 import 'package:todo/widgets/custom_search_bar.dart';
+import 'package:todo/widgets/empty_note.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -32,13 +33,21 @@ class HomeView extends StatelessWidget {
               CustomSearchBar(
                 onPressed: themeProvider.toggleTheme,
               ),
-              Consumer<OrganizedProvider>(
-                builder: (BuildContext context, org, child) {
-                  return org.gridStyle
-                      ? const CustomGridView()
-                      : const CustomNoteListView();
-                },
-              )
+              Consumer<NoteStoreProvider>(builder: (context, note, child) {
+                return Consumer<OrganizedProvider>(
+                  builder: (BuildContext context, org, child) {
+                    if (note.notesList.isEmpty) {
+                      return EmptyNotes();
+                    } else {
+                      if (org.gridStyle) {
+                        return const CustomGridView();
+                      } else {
+                        return const CustomNoteListView();
+                      }
+                    }
+                  },
+                );
+              })
             ],
           ),
         ),
