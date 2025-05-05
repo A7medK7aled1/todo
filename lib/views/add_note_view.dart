@@ -7,7 +7,9 @@ import 'package:todo/provider/note_store_provider.dart';
 import 'package:todo/widgets/custom_text_field.dart';
 
 class AddNoteView extends StatefulWidget {
-  const AddNoteView({super.key});
+  const AddNoteView({super.key, this.note, this.index});
+  final NoteModel? note;
+  final int? index;
 
   @override
   State<AddNoteView> createState() => _AddNoteViewState();
@@ -15,8 +17,21 @@ class AddNoteView extends StatefulWidget {
 
 class _AddNoteViewState extends State<AddNoteView> {
   final _formKey = GlobalKey<FormState>();
-  final _titleController = TextEditingController();
-  final _noteController = TextEditingController();
+  late TextEditingController _titleController;
+  late TextEditingController _noteController;
+
+  void initState() {
+    super.initState();
+
+    // إذا كانت هناك ملاحظة لتعديلها
+    if (widget.note != null) {
+      _titleController = TextEditingController(text: widget.note!.title);
+      _noteController = TextEditingController(text: widget.note!.content);
+    } else {
+      _titleController = TextEditingController();
+      _noteController = TextEditingController();
+    }
+  }
 
   @override
   void dispose() {
@@ -41,9 +56,25 @@ class _AddNoteViewState extends State<AddNoteView> {
                     content: _noteController.text,
                     date: DateTime.now(), // أو التاريخ بالشكل اللي تحبه
                   );
-                  log(note.toString());
-                  Provider.of<NoteStoreProvider>(context, listen: false)
-                      .addNote(note);
+
+                  if (widget.note == null) {
+                    // إضافة ملاحظة جديدة
+                    Provider.of<NoteStoreProvider>(context, listen: false)
+                        .addNote(note);
+                  } else {
+                    // تعديل ملاحظة موجودة
+                    Provider.of<NoteStoreProvider>(context, listen: false)
+                        .updateNote(
+                      widget.index!,
+                      note,
+                    );
+                  }
+
+                  Navigator.pop(context);
+
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Note saved successfully')),
+                  );
                 }
               },
               icon: const Icon(Icons.save),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:todo/models/note_model.dart';
+import 'package:todo/provider/note_store_provider.dart';
 import 'package:todo/provider/organized_provider.dart';
 import 'package:todo/provider/theme_provider.dart';
 import 'package:todo/views/home_view.dart';
@@ -12,10 +13,16 @@ void main() async {
   Hive.registerAdapter(NoteModelAdapter());
   await Hive.openBox<NoteModel>('notesBox');
 
-  runApp(ChangeNotifierProvider(
-    create: (context) => ThemeProvider(),
-    child: MainApp(),
-  ));
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => ThemeProvider()),
+        ChangeNotifierProvider(create: (_) => OrganizedProvider()),
+        ChangeNotifierProvider(create: (_) => NoteStoreProvider()..readNote()),
+      ],
+      child: const MainApp(),
+    ),
+  );
 }
 
 class MainApp extends StatelessWidget {

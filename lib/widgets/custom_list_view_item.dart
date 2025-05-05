@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:todo/models/note_model.dart';
 
 class CustomNoteListItem extends StatelessWidget {
-  const CustomNoteListItem({super.key});
+  const CustomNoteListItem({super.key, required this.text});
+
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +16,7 @@ class CustomNoteListItem extends StatelessWidget {
         border: Border.all(color: Colors.grey),
       ),
       child: Text(
-        'My Note',
+        text,
         maxLines: 10,
         style: TextStyle(fontSize: 14),
         overflow: TextOverflow.ellipsis,

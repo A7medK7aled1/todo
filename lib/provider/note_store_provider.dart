@@ -1,39 +1,54 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:todo/models/note_model.dart';
 
 class NoteStoreProvider extends ChangeNotifier {
-  List<NoteModel>? notesList;
+  List<NoteModel> notesList = [];
+  List<int> notesKeys = [];
+
   addNote(NoteModel note) async {
     try {
       var notebox = Hive.box<NoteModel>('notesBox');
       await notebox.add(note);
-      notifyListeners();
+      _refreshNotes(notebox);
     } catch (e) {
-      log(e.toString());
+      log('Add Error: ${e.toString()}');
     }
   }
 
   readNote() {
     try {
       var notebox = Hive.box<NoteModel>('notesBox');
-      notesList = notebox.values.toList();
+      _refreshNotes(notebox);
     } catch (e) {
-      log(e.toString());
+      log('Read Error: ${e.toString()}');
     }
-    notifyListeners();
   }
 
-  deleteNote(int index) async {
+  deleteNote(int key) async {
     try {
       var notebox = Hive.box<NoteModel>('notesBox');
-      await notebox.deleteAt(index);
-      notifyListeners();
+      await notebox.delete(key);
+      _refreshNotes(notebox);
     } catch (e) {
-      log(e.toString());
+      log('Delete Error: ${e.toString()}');
     }
+  }
+
+  updateNote(int key, NoteModel note) async {
+    try {
+      var notebox = Hive.box<NoteModel>('notesBox');
+      await notebox.put(key, note);
+      _refreshNotes(notebox);
+    } catch (e) {
+      log('Update Error: ${e.toString()}');
+    }
+  }
+
+  void _refreshNotes(Box<NoteModel> box) {
+    notesList = box.values.toList();
+    notesKeys = box.keys.cast<int>().toList(); // لازم تتأكد إنها int
+    notifyListeners();
   }
 }
