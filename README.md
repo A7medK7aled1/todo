@@ -48,12 +48,13 @@ Make sure you have Flutter installed. Follow the official [Flutter installation 
 
 ## 📸 Screenshots
 
-> *(Make sure the image paths and extensions are correct and consistent)*
+<div align="center">
+  <img src="screenshots/empty_note.PNG" alt="Empty State" width="200"/>
+  <img src="screenshots/light_mode.PNG" alt="List View (Light Theme)" width="200"/>
+  <img src="screenshots/Notes_grid_View.PNG" alt="Grid View (Dark Theme)" width="200"/>
+  <img src="screenshots/add_note_view.PNG" alt="Add Note" width="200"/>
+</div>
 
-- ![Empty State](screenshots/empty_note.PNG)
-- ![List View (Light Theme)](screenshots/light_mode.PNG)
-- ![Grid View (Dark Theme)](screenshots/Notes_grid_View.PNG)
-- ![Add Note](screenshots/add_note_view.PNG)
 
 ## 🤝 Contributing
 Contributions are welcome!  
