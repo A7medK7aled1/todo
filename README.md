@@ -50,7 +50,7 @@ Make sure you have Flutter installed. Follow the official [Flutter installation 
 
 > *(Make sure the image paths and extensions are correct and consistent)*
 
-- ![Empty State](screenshots/empty_note.PNG)
+- ![Empty State](screenshots\empty_note.PNG)
 - ![List View (Light Theme)](screenshots/light_mode.PNG)
 - ![Grid View (Dark Theme)](screenshots/notes_grid_view.PNG)
 - ![Add Note](screenshots/add_note_view.PNG)
