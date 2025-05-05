@@ -27,8 +27,6 @@ class CustomNoteGridItem extends StatelessWidget {
             ));
       },
       child: Container(
-        // width: MediaQuery.of(context).size.width / 2 - 20,
-        // height: MediaQuery.of(context).size.height / 4 - 20,
         padding: const EdgeInsets.all(10),
         margin: const EdgeInsets.all(10),
         decoration: BoxDecoration(
@@ -44,7 +42,7 @@ class CustomNoteGridItem extends StatelessWidget {
                   child: Text(
                     softWrap: true,
                     title,
-                    maxLines: 3,
+                    maxLines: 10,
                     style: TextStyle(fontSize: 20),
                     overflow: TextOverflow.ellipsis,
                   ),

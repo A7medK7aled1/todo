@@ -36,11 +36,7 @@ class MainApp extends StatelessWidget {
       themeMode: themeProvider.themeMode,
       theme: ThemeData.light(useMaterial3: true),
       darkTheme: ThemeData.dark(useMaterial3: true),
-      home: ChangeNotifierProvider(
-          create: (BuildContext context) {
-            return OrganizedProvider();
-          },
-          child: const HomeView()),
+      home: const HomeView(),
     );
   }
 }

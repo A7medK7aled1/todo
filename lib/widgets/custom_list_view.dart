@@ -18,7 +18,9 @@ class CustomNoteListView extends StatelessWidget {
         itemCount: notes.notesList?.length ?? 0,
         itemBuilder: (BuildContext context, int index) {
           return CustomNoteListItem(
-            text: notes.notesList![index].title,
+            note: notes.notesList[index],
+            index: notes.notesKeys[index],
+            title: notes.notesList[index].title,
           );
         },
       );
